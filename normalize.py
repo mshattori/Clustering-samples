@@ -25,11 +25,15 @@ with open("data_set/kddcup.data_10_percent", "rb") as r_file:
         writer = csv.writer(w_file)
         temp = r_file.read().split("\n")
         data = []
+        labels = []
         for i in temp:
             split_data = i.split(",")
             del split_data[1:4], split_data[16:18]
             #w_file.write(split_data[-1]+"\n")
             data.append(split_data[:-1])
+            labels.append(split_data[-1])
+        with open("data_set/train_label.data", "w") as l_file:
+            l_file.write("\n".join(labels))
         data.pop()
         data.pop()
 #        data = Normalize(data)
