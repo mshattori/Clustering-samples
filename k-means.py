@@ -27,6 +27,7 @@ if __name__ == '__main__':
     correct = 0.0
     f_to_a = 0.0
     a_to_f = 0.0
+    cluster_labels = []
     for i in range(len(labels)):
         if t_label[i] == 'normal.':
             if labels[i] == 17:
@@ -38,6 +39,10 @@ if __name__ == '__main__':
                 correct += 1.0
             else:
                 f_to_a += 1.0
+        cluster_labels.append(','.join([str(labels[i]), t_label[i]]))
+
+    with open("data_set/cluster_label.csv", "w") as c_file:
+        c_file.write("\n".join(cluster_labels))
 
     # evaluate
     accuracy = correct / len(labels) * 100
