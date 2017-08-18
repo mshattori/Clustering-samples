@@ -36,7 +36,7 @@ with open("data_set/kddcup.data_10_percent", "rb") as r_file:
             l_file.write("\n".join(labels))
         data.pop()
         data.pop()
-#        data = Normalize(data)
+        data = Normalize(data)
         writer.writerows(data)
 
         
